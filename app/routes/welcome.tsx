@@ -11,3 +11,10 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return <div>Welcome to the protected route</div>;
 }
+
+export async function clientAction({ request }: Route.ClientActionArgs) {
+  if (!localStorage.getItem('token')) {
+    console.log('Not authenticated');
+    throw new Response('Not authenticated', { status: 401 });
+  }
+}

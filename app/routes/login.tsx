@@ -14,18 +14,17 @@ export default function Login() {
   return <LoginForm />;
 }
 
-export async function action({ request }: Route.ActionArgs) {
+export async function clientAction({ request }: Route.ActionArgs) {
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get('mode');
   if (mode !== 'login' && mode !== 'signup') {
     throw new Response('Invalid mode', { status: 422 });
   }
-
+  console.log('clientAction');
   const formData = await request.formData();
   const email = formData.get('email');
   const password = formData.get('password');
 
-  console.log('Username:', password);
   const response = await fetch(`http://localhost:8080/${mode}`, {
     method: 'POST',
     headers: {
@@ -33,13 +32,16 @@ export async function action({ request }: Route.ActionArgs) {
     },
     body: JSON.stringify({ email, password }),
   });
-  console.log('Response:', response);
   if (response.status === 422 || response.status === 401) {
     return response;
   }
   if (!response.ok) {
     throw new Response('Something went wrong', { status: 500 });
   }
+
+  const responseData = await response.json();
+  const { token } = responseData;
+  localStorage.setItem('token', token);
   return redirect('/welcome');
 }
 

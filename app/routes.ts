@@ -5,4 +5,6 @@ export default [
   route('login', 'routes/login.tsx'),
 
   route('welcome', 'routes/welcome.tsx'),
+
+  route('logout', 'routes/logout.ts'),
 ] satisfies RouteConfig;

@@ -1,5 +1,6 @@
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
+import { Link } from 'react-router';
+import logoDark from './logo-dark.svg';
+import logoLight from './logo-light.svg';
 
 export function Welcome() {
   return (
@@ -25,6 +26,7 @@ export function Welcome() {
               What&apos;s next?
             </p>
             <ul>
+              <Link to="/logout">Logout</Link>
               {resources.map(({ href, text, icon }) => (
                 <li key={href}>
                   <a
@@ -48,8 +50,8 @@ export function Welcome() {
 
 const resources = [
   {
-    href: "https://reactrouter.com/docs",
-    text: "React Router Docs",
+    href: 'https://reactrouter.com/docs',
+    text: 'React Router Docs',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +70,8 @@ const resources = [
     ),
   },
   {
-    href: "https://rmx.as/discord",
-    text: "Join Discord",
+    href: 'https://rmx.as/discord',
+    text: 'Join Discord',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
