@@ -1,4 +1,5 @@
 import {
+  Form,
   Link,
   useActionData,
   useNavigation,
@@ -16,8 +17,11 @@ export default function AuthForm() {
   const isSubmitting = navigation.state === 'submitting';
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold"> {isSignup ? 'Register' : 'Login'}</h1>
+    <div className="flex flex-col items-center justify-center ">
+      <h1 className="text-4xl font-bold mb-4">
+        {' '}
+        {isSignup ? 'Register' : 'Login'}
+      </h1>
       {data && data.errors && (
         <ul>
           {(Object.values(data.errors) as string[]).map(error => (
@@ -28,7 +32,7 @@ export default function AuthForm() {
         </ul>
       )}
       {data && data.message && <p className="text-red-500">{data.message}</p>}
-      <form className="flex flex-col items-center" method="post">
+      <Form className="flex flex-col items-center" method="post">
         <input
           type="text"
           placeholder="Email"
@@ -44,11 +48,11 @@ export default function AuthForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="p-2 bg-blue-500 text-white rounded"
+          className="p-2 bg-blue-500 text-white rounded mt-4 w-full"
         >
           {isSubmitting ? 'Wait...' : 'Send'}
         </button>
-      </form>
+      </Form>
       <p className="mt-4">
         {isSignup ? (
           <Link to="/login?mode=login" className="text-blue-500">
@@ -63,17 +67,3 @@ export default function AuthForm() {
     </div>
   );
 }
-/* 
-/* export async function clientAction({ request }: Route.ClientActionArgs) {
-  let formData = await request.formData();
-  let title = formData.get('title');
-  console.log('Form submitted with title:', title);
-  return;
-}
- 
-
-export async function action({ request }: Route.ActionArgs) {
-  let formData = await request.formData();
-  let title = formData.get('title');
-  console.log('Form submitted with title:', title);
-} */

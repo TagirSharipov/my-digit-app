@@ -1,4 +1,4 @@
-import type { Route } from './+types/home';
+import type { Route } from './+types/login';
 import { Welcome } from '../welcome/welcome';
 import LoginForm from '~/components/AuthForm';
 import { redirect } from 'react-router';
@@ -14,13 +14,14 @@ export default function Login() {
   return <LoginForm />;
 }
 
-export async function clientAction({ request }: Route.ActionArgs) {
+export async function clientAction({ request }: Route.ClientActionArgs) {
   const searchParams = new URL(request.url).searchParams;
-  const mode = searchParams.get('mode');
+  let mode = searchParams.get('mode');
+
   if (mode !== 'login' && mode !== 'signup') {
-    throw new Response('Invalid mode', { status: 422 });
+    mode = 'login';
   }
-  console.log('clientAction');
+
   const formData = await request.formData();
   const email = formData.get('email');
   const password = formData.get('password');
@@ -44,5 +45,3 @@ export async function clientAction({ request }: Route.ActionArgs) {
   localStorage.setItem('token', token);
   return redirect('/welcome');
 }
-
-//TODO validation, error handling, protected route
