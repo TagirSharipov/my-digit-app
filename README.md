@@ -41,8 +41,9 @@ This project is a simple web application built with **Node.js** for the backend 
 - Built with **Node.js** and **Express**.
 - Stores registered usernames and passwords in a JSON file.
 - Provides endpoints for:
-  - User login (`POST /login`).
-  - Token verification (`GET /verify`).
+  - User login 
+  - User signup
+
 
 ### Frontend
 
@@ -69,7 +70,7 @@ This project is a simple web application built with **Node.js** for the backend 
 
 Repo https://github.com/TagirSharipov/digit-backend
 
-1. Navigate to the backend directory.
+1. Clone the repository.
 2. Install dependencies:
    ```bash
    npm install
