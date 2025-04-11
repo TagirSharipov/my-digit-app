@@ -67,6 +67,8 @@ This project is a simple web application built with **Node.js** for the backend 
 
 ### Backend
 
+Repo https://github.com/TagirSharipov/digit-backend
+
 1. Navigate to the backend directory.
 2. Install dependencies:
    ```bash
@@ -80,7 +82,13 @@ This project is a simple web application built with **Node.js** for the backend 
 
 ### Frontend
 
-1. Navigate to the frontend directory.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/TagirSharipov/my-digit-app.git
+   cd my-digit-app
+   ```
+
 2. Install dependencies:
    ```bash
    npm install
