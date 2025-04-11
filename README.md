@@ -1,87 +1,118 @@
-# Welcome to React Router!
+# Simple Web Application with Login and Welcome Page
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+This project is a simple web application built with **Node.js** for the backend and **React** for the frontend. It demonstrates a basic login functionality with JWT-based authentication and a protected welcome page visible only to logged-in users.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+### MUST HAVE Functionalities
 
-## Getting Started
+1. **Login Page**:
 
-### Installation
+   - A page where users can enter their username and password.
+   - Displays an error message if the credentials are incorrect.
 
-Install the dependencies:
+2. **Welcome Page**:
 
-```bash
-npm install
-```
+   - Displays a personalized welcome message: "Welcome! {username}".
+   - Accessible only to logged-in users.
+   - Redirects unauthenticated users to the login page.
 
-### Development
+3. **Login Functionality**:
 
-Start the development server with HMR:
+   - Verifies user credentials against a JSON file stored on the backend.
+   - Issues a JWT token upon successful login.
 
-```bash
-npm run dev
-```
+4. **JWT Token Usage**:
+   - Protects the welcome page by verifying the JWT token.
 
-Your application will be available at `http://localhost:5173`.
+### NICE TO HAVE Functionalities
 
-## Building for Production
+1. **Responsive Design**:
 
-Create a production build:
+   - The application is fully responsive and works well on different screen sizes.
 
-```bash
-npm run build
-```
+2. **Nice Layout and Design**:
+   - Styled using **Tailwind CSS** for a clean and modern look.
 
-## Deployment
+## Project Structure
 
-### Docker Deployment
+### Backend
 
-To build and run using Docker:
+- Built with **Node.js** and **Express**.
+- Stores registered usernames and passwords in a JSON file.
+- Provides endpoints for:
+  - User login (`POST /login`).
+  - Token verification (`GET /verify`).
 
-```bash
-docker build -t my-app .
+### Frontend
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+- Built with **React**.
+- Pages:
+  - **Login Page**: Allows users to log in.
+  - **Welcome Page**: Displays a personalized message for logged-in users.
+- Uses **React Router 7** for navigation.
+- Styled with **Tailwind CSS**.
 
-The containerized application can be deployed to any platform that supports Docker, including:
+### Authentication
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+- JWT tokens are used for authentication.
+- Tokens are stored in the browser's `localStorage`.
 
-### DIY Deployment
+## How to Run the Project
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+### Prerequisites
 
-Make sure to deploy the output of `npm run build`
+- Node.js installed on your system.
+- A package manager like `npm` or `yarn`.
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
+### Backend
 
-## Styling
+1. Navigate to the backend directory.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the server:
+   ```bash
+   npm start
+   ```
+4. The backend will run on `http://localhost:8080`.
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+### Frontend
 
----
+1. Navigate to the frontend directory.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. The frontend will run on `http://localhost:5137`.
 
-Built with ❤️ using React Router.
+## Usage
+
+1. Open the application in your browser at `http://localhost:5137`.
+2. Sign up with an email and a password (at least 6 characters).
+3. If the credentials are correct, you will be redirected to the welcome page.
+4. If the credentials are incorrect, an error message will be displayed.
+5. The welcome page will display data fetched via an API call using the token.
+
+## JSON File for User Data
+
+The backend uses a JSON file to store registered usernames and passwords.
+
+## Technologies Used
+
+- **Backend**: Node.js, Express, JWT
+- **Frontend**: React, React Router 7, Tailwind CSS
+
+## Future Improvements
+
+- Add token expiration.
+- Add automatic logout
+
+## License
+
+This project is licensed under the MIT License.
